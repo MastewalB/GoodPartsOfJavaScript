@@ -36,7 +36,16 @@ function twice(binfun) {
     };
 }
 
-
+/*
+    Currying is a technique in which a function takes multiple arguments and returns a sequence of functions
+    with each single argument.
+*/
+/**
+ * Function takes a binary function and a number as an argument and returns another function 
+ * that takes another argument to call the binary function with the first one
+ * @param {Function} binfun - 
+ * @param {Integer} arg 
+ */
 function curry(binfun, arg) {
     return function (second) {
         return binfun(arg, second);
@@ -56,6 +65,12 @@ function composeb(binfun1, binfun2) {
     };
 }
 
+/**
+ * Function takes a count value and calls function binfun until count is zero
+ * @param {Function} binfun - A binary function 
+ * @param {Integer} count - A count integer value
+ * @returns {Function} - Function binfun is invoked
+ */
 function limit(binfun, count) {
     return function (a, b) {
         if (count > 1) {
