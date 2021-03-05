@@ -72,3 +72,23 @@ let bus = reverse(sub);
 let ad = bus(3, 2);
 console.log(ad);
 //console.log(liftf(add));
+
+
+/**
+ * A function that takes a binary function and returns an object containing an invoke function 
+ * that can invoke the binary function and revoke function that disables the invoke function
+ * @param {Function} bin_fun - A binary function that takes to arguments to perform a certain calculation 
+ * @return {Object} - object contains invoke and revoke functions  
+*/
+function revocable(bin_fun) {
+    return {
+        invoke: function (first, second) {
+            if (bin_fun !== undefined) {
+                return bin_fun(first, second)
+            }
+        },
+        revoke: function () {
+            bin_fun: undefined
+        }
+    }
+}
