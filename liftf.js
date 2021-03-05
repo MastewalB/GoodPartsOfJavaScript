@@ -103,7 +103,7 @@ function revocable(bin_fun) {
             }
         },
         revoke: function () {
-            bin_fun: undefined
+            bin_fun = undefined
         }
     }
 }
