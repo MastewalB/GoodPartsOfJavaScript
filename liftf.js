@@ -243,7 +243,8 @@ console.log(fib()); // 13
 
 /**
  * function that takes a value and optional source string and returns them in an object
- * @param {}
+ * @param {Integer} - value 
+ * @param {String} - Source of the value
 */
 function m(value, source) {
     return {
@@ -264,6 +265,24 @@ function addm(a, b) {
 
 function liftm(bin_fun, op) {
     return function (a, b) {
+        return m(
+            bin_fun(a.value, b.value),
+            "(" + a.source + op +
+            b.source + ")"
+        );
+    };
+}
+
+
+function liftm_modified(bin_fun, op) {
+    return function (a, b) {
+        if (typeof a === 'number') {
+            a = m(a);
+        }
+        if (typeof b === 'number') {
+            b = m(b);
+        }
+
         return m(
             bin_fun(a.value, b.value),
             "(" + a.source + op +
